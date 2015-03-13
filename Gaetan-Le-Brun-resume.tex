@@ -1,9 +1,21 @@
 \documentclass[letterpaper]{article}
 
 \usepackage{my-resume}
+\usepackage{geometry}
 
+% Turning on the English output.
 \entrue
+% Turning on the summary output.
+%\summarytrue
 
+% Page geometry
+\geometry{
+   body={7.24in, \ifsummary 10in \else 9in \fi},
+   left=0.63in,
+   top=\ifsummary 0.5in \else 1in \fi
+}
+
+% Initializing the resume.
 \setupmyresume
 
 \begin{document}

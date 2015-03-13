@@ -1,32 +1,51 @@
 \usepackage{hyperref}
-\usepackage{geometry}
 \usepackage{enumitem}
 \usepackage[compact]{titlesec}
 \usepackage{array}
 \usepackage{newclude}
 
+% Conditionnal and associated command to control the English output
 \newif\ifen
-\newif\iffr
-\newif\ifsum
-
 \newcommand{\en}[1]{\ifen#1\fi}
-\newcommand{\fr}[1]{\iffr#1\fi}
+\newcommand{\smallen}[1]{\ifen\small{#1}\fi}
 
-% New column types
+% Conditionnal and associated command to control the French output
+\newif\iffr
+\newcommand{\fr}[1]{\iffr#1\fi}
+\newcommand{\smallfr}[1]{\iffr\small{#1}\fi}
+
+% Conditionnal to control the summary section output
+\newif\ifsummary
+
+% New table column types
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 
-\def\setupmyresume{
+% New item labels
+\renewcommand{\labelitemi}{}
+\renewcommand{\labelitemii}{$\bullet$}
 
-    \def\name{Ga\"etan Le Brun}
+\def\name{Ga\"etan Le Brun}
 
-    % Setting up the spacing
-    \ifsum \titlespacing*{\section}{0pt}{3pt}{0pt} \else \titlespacing*{\section}{0pt}{8pt}{6pt} \fi
-    \setlist{nolistsep}
-    \setlength\parindent{0em}
+% Setting up the spacing before and after a section depending on the presence of a summary.
+\titlespacing*{\section}{0pt}{3pt}{0pt}
 
+\setlist{nolistsep}
 
+% Customize page headers
+\pagestyle{myheadings}
+
+%\markright{\name}
+\thispagestyle{empty}
+
+% Tables configuration
+\def\arraystretch{1.2}
+\setlength{\tabcolsep}{0.7pt}
+\setlength{\textfloatsep}{1cm}
+
+% Command to setup the content of the resume
+\newcommand\setupmyresume{
     % PDF metadata
     \hypersetup{
         colorlinks = true,
@@ -37,26 +56,14 @@
         pdfsubject = {\en{Resume},\fr{CV}},
         pdfpagemode = UseNone
     }
-
-    \geometry{
-        body={7.5in, 10.5in},
-        left=0.5in,
-        top=0.5in
-    }
-
-    % Customize page headers
-    \pagestyle{myheadings}
-    \markright{\name}
-    \thispagestyle{empty}
 }
 
-
-\def\makemyresume{
+% Command to create the content of the resume
+\newcommand\makemyresume{
     \centerline{\huge \bf \name}
     \centerline{\en{1(415) 499-0217}\fr{02 98 54 57 68}}
     \centerline{\href{mailto:gaetan.lebrun@gmail.com}{\tt gaetanlebrun@gmail.com}}
-
-    \ifsum \include*{summary} \fi
+    \ifsummary \include*{summary} \fi
     \include*{experience}
     \include*{skills}
     \include*{education}
