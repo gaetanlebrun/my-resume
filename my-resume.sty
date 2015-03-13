@@ -1,0 +1,64 @@
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage[compact]{titlesec}
+\usepackage{array}
+\usepackage{newclude}
+
+\newif\ifen
+\newif\iffr
+\newif\ifsum
+
+\newcommand{\en}[1]{\ifen#1\fi}
+\newcommand{\fr}[1]{\iffr#1\fi}
+
+% New column types
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\def\setupmyresume{
+
+    \def\name{Ga\"etan Le Brun}
+
+    % Setting up the spacing
+    \ifsum \titlespacing*{\section}{0pt}{3pt}{0pt} \else \titlespacing*{\section}{0pt}{8pt}{6pt} \fi
+    \setlist{nolistsep}
+    \setlength\parindent{0em}
+
+
+    % PDF metadata
+    \hypersetup{
+        colorlinks = true,
+        urlcolor = black,
+        pdfauthor = {\name},
+        pdfkeywords = {\en{Software Engineer}\fr{Ing\'enieur Logiciel}, Smalltak, Java, Javascript},
+        pdftitle = {\name: \en{Resume}\fr{CV}},
+        pdfsubject = {\en{Resume},\fr{CV}},
+        pdfpagemode = UseNone
+    }
+
+    \geometry{
+        body={7.5in, 10.5in},
+        left=0.5in,
+        top=0.5in
+    }
+
+    % Customize page headers
+    \pagestyle{myheadings}
+    \markright{\name}
+    \thispagestyle{empty}
+}
+
+
+\def\makemyresume{
+    \centerline{\huge \bf \name}
+    \centerline{\en{1(415) 499-0217}\fr{02 98 54 57 68}}
+    \centerline{\href{mailto:gaetan.lebrun@gmail.com}{\tt gaetanlebrun@gmail.com}}
+
+    \ifsum \include*{summary} \fi
+    \include*{experience}
+    \include*{skills}
+    \include*{education}
+    \include*{languages}
+}
