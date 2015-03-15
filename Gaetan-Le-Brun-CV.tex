@@ -1,6 +1,4 @@
-\documentclass[a4paper]{article}
-
-\usepackage{my-resume}
+\documentclass[a4paper]{my-resume}
 \usepackage{geometry}
 
 % Turning on the French output
@@ -10,14 +8,9 @@
 
 % Page geometry
 \geometry{
-   body={17.8cm, \ifsummary 26.7cm \else 24.7cm \fi},
-   left=1.6cm,
-   top=\ifsummary 1.5cm \else 2.5cm \fi
+  body={17.8cm, \ifsummary 26.7cm \else 24.7cm \fi},
+  left=1.6cm,
+  top=\ifsummary 1.5cm \else 2.5cm \fi
 }
 
-% Initializing the content
-\setupmyresume
-
-\begin{document}
-    \makemyresume
-\end{document}
+\input{my-resume}

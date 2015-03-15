@@ -1,0 +1,21 @@
+\def\name{Ga\"etan Le Brun}
+\def\email{gaetanlebrun@gmail.com}
+\def\phone{\en{1(415) 499-0217}\fr{02 98 54 57 68}}
+
+\resumemetadata
+  {\name}
+  {\en{Software Engineer}\fr{Ing\'enieur Logiciel}, Smalltak, Java, Javascript}
+  {\name: \en{Resume}\fr{CV}}
+  {\en{Resume}\fr{CV}}
+
+\begin{document}
+  \resumetitle{\name}
+  \resumecontact
+    {\href{mailto:\email}{\tt \email}}
+    {\phone}
+  \ifsummary \include*{summary} \fi
+  \include*{experience}
+  \include*{skills}
+  \include*{education}
+  \include*{languages}
+\end{document}
