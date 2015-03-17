@@ -10,7 +10,7 @@
 
 % Customising the \section command
 \titleformat{\section}
-  {\bf\Large\scshape\raggedright} % Large, small capitalized, align left
+  {\bf\Large\raggedright} % Large, small capitalized, align left
   {}{0em}            % Prefix
   {}               % Suffix
 
