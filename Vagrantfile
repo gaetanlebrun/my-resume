@@ -7,7 +7,7 @@ $bootstrap = <<EOF
 "===> I am updating apt packages"
 sudo apt-get update
 
-"===> I am install git and texlive packages"
+"===> I am installing git and texlive packages"
 sudo apt-get -y install git texlive texlive-latex-extra
 EOF
 
